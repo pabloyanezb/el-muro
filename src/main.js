@@ -13,6 +13,7 @@ Vue.config.productionTip = false
 
 Vue.use(Vuex)
 // Vue.use(VueFirestore, {key: 'id'});
+firebase.auth().languageCode = 'es';
 
 const store = new Vuex.Store({
   state: {
@@ -43,7 +44,8 @@ const store = new Vuex.Store({
       .then(response => {
         console.log(response)
         context.commit('set_error_register', null);
-        context.commit('set_user', {email: datos.email, name: datos.name});
+        context.commit('set_user', {email: datos.email, displayName: datos.name});
+        router.push('/');
       })
       .catch(error => {
         context.commit('set_error_register', error.message);
@@ -56,7 +58,7 @@ const store = new Vuex.Store({
         console.log(response)
         context.commit('set_error_login', null);
         context.commit('set_user', response.user);
-        router.push('/success');
+        router.push('/');
       })
       .catch(error => {
         context.commit('set_error_login', error.message);
