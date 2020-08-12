@@ -1,16 +1,26 @@
 <template>
-  <v-row class="background blue-grey darken-4" >
-    <v-col md='3' offset-md='1'>
-      <v-card>
-        <Register></Register>
-      </v-card>
-    </v-col>
-    <v-col md='3' offset-md='4'>
-      <v-card>
-        <Login></Login>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <v-app-bar
+      color="deep-purple darken-4"
+      dense
+      dark
+    >
+      <v-toolbar-title>El Muro</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <v-row>
+      <v-col md='3' offset-md='1'>
+        <v-card>
+          <Register></Register>
+        </v-card>
+      </v-col>
+      <v-col md='3' offset-md='4'>
+        <v-card>
+          <Login></Login>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -27,9 +37,4 @@ export default {
 </script>
 
 <style>
-.background {
-  width: 100%;
-  height: 100vh;
-  margin: 0 0;
-}
 </style>

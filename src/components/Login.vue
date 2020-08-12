@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid">
+  <v-form v-model="valid" @submit.prevent="login">
     <v-container>
     <h1>Ingresar</h1>
       <v-text-field
@@ -15,7 +15,8 @@
         :rules="passRules"
         required
       ></v-text-field>
-      <v-btn color="secondary" :disabled="!valid">Ingresar</v-btn>
+      <v-btn color="accent" :disabled="!valid" type="submit">Ingresar</v-btn>
+      <v-alert v-if="error" type="error" dense outlined>{{error}}</v-alert>
     </v-container>
   </v-form>
 </template>
@@ -38,5 +39,19 @@ export default {
       ],
     }
   },
+  computed: {
+    error() {
+      return this.$store.state.error_login;
+    }
+  },
+  methods: {
+    login() {
+      const datos = {
+        email: this.email, 
+        password: this.password,
+      };
+      this.$store.dispatch('login', datos);
+    }
+  }
 }
 </script>
