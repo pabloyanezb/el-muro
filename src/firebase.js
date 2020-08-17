@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore'
+import 'firebase/storage'
 
 // referencing configuration values from .env.development
 var firebaseConfig = {
@@ -13,6 +14,7 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase with configurations from above
-firebase.initializeApp(firebaseConfig);
-// export const db = firebaseApp.firestore();
-// export const auth = firestore.auth();
+const fb = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+export {fb,db}

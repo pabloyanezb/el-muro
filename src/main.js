@@ -5,15 +5,14 @@ import vuetify from './plugins/vuetify';
 import firebase from 'firebase/app'
 import 'firebase/auth' // Imports para la autentificación
 import './firebase.js'
-// import VueFirestore from 'vue-firestore';
+import VueFirestore from 'vue-firestore';
 import App from './App.vue'
 import router from './router';
 
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
-// Vue.use(VueFirestore, {key: 'id'});
-firebase.auth().languageCode = 'es';
+Vue.use(VueFirestore, {key: 'id'});
 
 const store = new Vuex.Store({
   state: {
@@ -38,13 +37,14 @@ const store = new Vuex.Store({
       .then(response => {
         console.log(response)
         firebase.auth().currentUser.updateProfile({
-          displayName: datos.name
+          displayName: datos.name,
+          photoURL: datos.img
         })
       })
       .then(response => {
         console.log(response)
         context.commit('set_error_register', null);
-        context.commit('set_user', {email: datos.email, displayName: datos.name});
+        context.commit('set_user', {email: datos.email, displayName: datos.name, photoURL: datos.img});
         router.push('/');
       })
       .catch(error => {
@@ -75,7 +75,6 @@ const store = new Vuex.Store({
     }
   }
 })
-
 
 new Vue({
   vuetify,

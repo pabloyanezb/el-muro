@@ -1,23 +1,27 @@
 <template>
   <div>
     <v-app-bar
-      color="deep-purple darken-4"
+      color="grey darken-4"
       dense
       dark
     >
-      <v-toolbar-title>El Muro</v-toolbar-title>
+      <v-toolbar-title>The Wall</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-row>
-      <v-col md='3' offset-md='1'>
-        <v-card>
-          <Register></Register>
-        </v-card>
+      <v-col md='4' offset-md='1'>
+        <v-container>
+          <v-card>
+            <Register></Register>
+          </v-card>
+        </v-container>
       </v-col>
-      <v-col md='3' offset-md='4'>
-        <v-card>
-          <Login></Login>
-        </v-card>
+      <v-col md='4' offset-md='2'>
+        <v-container>
+          <v-card>
+            <Login></Login>
+          </v-card>
+        </v-container>
       </v-col>
     </v-row>
   </div>
@@ -36,5 +40,5 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 </style>
